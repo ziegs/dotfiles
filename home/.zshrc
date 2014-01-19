@@ -22,6 +22,11 @@ ZSH_THEME="ziegs"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+HOMESHICK_COMPLETION="$HOME/.homesick/repos/homeshick/completions"
+if [ -d $HOMESHICK_COMPLETION ]; then
+  fpath=($HOMESHICK_COMPLETION $fpath)
+fi
+
 plugins=(git brew vi-mode tmux osx lol)
 
 source $ZSH/oh-my-zsh.sh
@@ -40,4 +45,3 @@ bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)

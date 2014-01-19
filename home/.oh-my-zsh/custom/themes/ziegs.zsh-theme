@@ -1,12 +1,22 @@
+# Based on oh-my-zsh's alanpeabody theme. Assumes vi-mode plugin is enabled.
 
 local user="%{$fg[magenta]%}%n@%{$fg[magenta]%}%m%{$reset_color%}"
 local pwd="%{$fg[blue]%}%~%{$reset_color%}"
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+# Change the prompt bracket to magenta in NORMAL mode
+function prompt_mode_indicator {
+  CHAR=">"
+  COLOR_CHAR="%{$fg[magenta]%}$CHAR%{$reset_color%}"
+  echo "${${KEYMAP/vicmd/$COLOR_CHAR}/(main|viins)/$CHAR}"
+}
+
+# Mode-colored prompt bracket + git/hg info for current directory
 function prompt_char {
-  git branch >/dev/null 2>/dev/null && echo "%{$fg[green]%}±%{$reset_color%} >" && return
-  hg root >/dev/null 2>/dev/null && echo "%{$fg[blue]%}☿%{$reset_color%} >" && return
-  echo ">"
+  CHAR="$(prompt_mode_indicator)"
+  git branch >/dev/null 2>/dev/null && echo "%{$fg[green]%}±%{$reset_color%} $CHAR" && return
+  hg root >/dev/null 2>/dev/null && echo "%{$fg[blue]%}☿%{$reset_color%} $CHAR" && return
+  echo "$CHAR"
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
