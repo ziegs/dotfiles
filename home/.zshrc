@@ -30,7 +30,7 @@ if [ -d $HOMESHICK_COMPLETION ]; then
 fi
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-plugins=(git brew tmux osx lol golang node npm bower grunt maven) #vi-mode?
+plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting gradle) #vi-mode?
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,3 +54,6 @@ export ANDROID_HOME=/Applications/Android\ Studio.app/sdk
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
 
 source ~/.zsh_aliases
+
+## ZSH options
+setopt correct
