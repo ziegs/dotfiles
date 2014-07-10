@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh
 ZSH_THEME="ziegs"
 
-if [[ -d $HOME/.zshrc.pre ]]; then
+if [[ -f $HOME/.zshrc.pre ]]; then
   source $HOME/.zshrc.pre
 fi
 
@@ -23,7 +23,7 @@ plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-high
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/go"
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin::/usr/local/go/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin"
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -49,7 +49,7 @@ autoload bashcompinit
 bashcompinit
 source $ZSH_CUSTOM/homesick_bash_completion.sh
 
-if [[ -d $HOME/.zshrc.post ]]; then
+if [[ -f $HOME/.zshrc.post ]]; then
   source $HOME/.zshrc.post
 fi
 
