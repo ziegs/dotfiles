@@ -62,4 +62,4 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 ## Some Bash autocompletions
 autoload bashcompinit
 bashcompinit
-$HOME/.oh-my-zsh/custom/homesick_bash_completion.sh
+source $HOME/.zsh/homesick_bash_completion.sh
