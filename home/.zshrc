@@ -24,10 +24,6 @@ ZSH_THEME="ziegs"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-HOMESHICK_COMPLETION="$HOME/.homesick/repos/homeshick/completions"
-if [ -d $HOMESHICK_COMPLETION ]; then
-  fpath=($HOMESHICK_COMPLETION $fpath)
-fi
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting gradle) #vi-mode?
@@ -61,3 +57,8 @@ setopt correct
 ## Autocomplete options
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+## Some Bash autocompletions
+autoload bashcompinit
+bashcompinit
+$HOME/.oh-my-zsh/custom/homesick_bash_completion.sh
