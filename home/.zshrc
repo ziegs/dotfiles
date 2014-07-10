@@ -1,14 +1,10 @@
-source $HOME/.zsh/iTerm2Colors.sh
-
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh
-
 ZSH_THEME="ziegs"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
@@ -35,12 +31,6 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-
-export ANDROID_HOME=/Applications/Android\ Studio.app/sdk
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
-
 source ~/.zsh_aliases
 
 ## ZSH options
@@ -53,4 +43,4 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 ## Some Bash autocompletions
 autoload bashcompinit
 bashcompinit
-source $HOME/.zsh/homesick_bash_completion.sh
+source $ZSH_CUSTOM/homesick_bash_completion.sh
