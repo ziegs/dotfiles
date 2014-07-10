@@ -2,6 +2,7 @@
 source ~/.bin/iTerm2Colors.sh
 
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
