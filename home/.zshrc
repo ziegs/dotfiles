@@ -18,17 +18,17 @@ COMPLETION_WAITING_DOTS="true"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting gradle) #vi-mode?
+plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting $plugins) #vi-mode?
 
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/go"
-export PATH=":$HOME/.bin:$GOPATH/bin:$HOME/android-sdks/platform-tools:$HOME/android-sdks/tools:/usr/local/bin:/usr/local/sbin:$HOME/Library/Python/2.7/bin:/usr/bin:/bin:/usr/sbin:/sbin::/usr/local/go/bin:$HOME/.go_appengine"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin::/usr/local/go/bin"
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='gvim'
 fi
 
 bindkey -M viins 'jj' vi-cmd-mode
