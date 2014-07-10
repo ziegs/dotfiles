@@ -1,0 +1,1 @@
+alias aevim='PYTHONPATH=/usr/local/google_appengine/:$PYTHONPATH vim'
