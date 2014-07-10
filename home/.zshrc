@@ -57,3 +57,7 @@ source ~/.zsh_aliases
 
 ## ZSH options
 setopt correct
+
+## Autocomplete options
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
