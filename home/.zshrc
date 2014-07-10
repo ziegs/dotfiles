@@ -2,6 +2,10 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh
 ZSH_THEME="ziegs"
 
+if [[ -d $HOME/.zshrc.pre ]]; then
+  source $HOME/.zshrc.pre
+fi
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -44,3 +48,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 autoload bashcompinit
 bashcompinit
 source $ZSH_CUSTOM/homesick_bash_completion.sh
+
+if [[ -d $HOME/.zshrc.post ]]; then
+  source $HOME/.zshrc.post
+fi
+
