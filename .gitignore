@@ -1,8 +1,9 @@
 *.swo
 *~
 *.swp
-tmp/
-backup/
-bundle/
+tmp/*
+backup/*
+bundle/*
+!bundle/Vundle.vim
 eclim/
 plugin/

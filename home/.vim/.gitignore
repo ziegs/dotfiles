@@ -1,8 +1,0 @@
-*.swo
-*~
-*.swp
-tmp/
-backup/
-bundle/
-eclim/
-plugin/
