@@ -1,8 +1,12 @@
 *.swo
 *~
 *.swp
-tmp/*
-backup/*
+home/.vim/tmp/*
+!home/.vim/tmp/.track
+home/.vim/backup/*
+!home/.vim/backup/.track
+home/.vim/undo/*
+!home/.vim/undo/.track
 home/.vim/bundle/*
 !home/.vim/bundle/Vundle.vim
 eclim/
