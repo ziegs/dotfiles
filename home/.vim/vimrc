@@ -35,6 +35,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'edkolev/promptline.vim'
 
 " Commands
 Plugin 'scrooloose/nerdcommenter'
@@ -350,6 +351,13 @@ inoremap <F2> <esc>:NERDTreeToggle<cr>
 
 let g:airline_powerline_fonts = 1
 let g:tmuxline_preset = 'crosshair'
+let g:promptline_preset = {
+        \'a': [ promptline#slices#user() ],
+        \'b': [ promptline#slices#cwd() ],
+        \'c' : [ promptline#slices#vcs_branch() ],
+        \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#battery() ],
+        \'z' : [ promptline#slices#host() ]}
+
 
 "au FileType javascript call JavaScriptFold()
 

@@ -1,6 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh
-ZSH_THEME="ziegs"
+ZSH_THEME="ziegs-promptline"
 
 if [[ -f $HOME/.zshrc.pre ]]; then
   source $HOME/.zshrc.pre
