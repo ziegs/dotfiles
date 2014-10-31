@@ -146,6 +146,12 @@ function __promptline_battery {
     fi
   fi
 
+  if [ -d /sys/class/power_supply ]; then
+    [ -z "$(ls -A /sys/class/power_supply)" ] && return 1
+  else
+    return 1
+  fi
+
   # linux
   for possible_battery_dir in /sys/class/power_supply/BAT*; do
     if [[ -d $possible_battery_dir && -f "$possible_battery_dir/energy_full" && -f "$possible_battery_dir/energy_now" ]]; then
