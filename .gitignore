@@ -12,3 +12,5 @@ home/.vim/bundle/*
 eclim/
 plugin/
 .DS_Store
+plugged/
+plug.vim

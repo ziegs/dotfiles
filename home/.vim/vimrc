@@ -6,78 +6,68 @@
 " Preconfig for Vundle
 set nocompatible               " be iMproved
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 let mapleader = ","
 let maplocalleader = "\\"
 
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 "Navigation
-Plugin 'ZoomWin'
-Plugin 'kien/ctrlp.vim'
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'Lokaltog/vim-easymotion'
 
 " UI
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Rykka/colorv.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomtom/quickfixsigns_vim'
-Plugin 'croaker/mustang-vim'
-Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ervandew/supertab'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'edkolev/promptline.vim'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tomtom/quickfixsigns_vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/promptline.vim'
 
 " Commands
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-fugitive'
-Plugin 'godlygeek/tabular'
-Plugin 'gmarik/sudo-gui.vim'
-Plugin 'milkypostman/vim-togglelist'
-Plugin 'mutewinter/swap-parameters'
-Plugin 'keepcase.vim'
-Plugin 'scratch.vim'
-Plugin 'mattn/zencoding-vim'
-Plugin 'mutewinter/GIFL'
-Plugin 'sjbach/lusty'
-Plugin 'YankRing.vim'
-Plugin 'benmills/vimux'
-Plugin 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular', { 'on': ['Tab', 'Tabularize'] }
+Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
+Plug 'milkypostman/vim-togglelist'
+Plug 'mutewinter/swap-parameters'
+Plug 'keepcase.vim'
+Plug 'scratch.vim', { 'on': 'Scratch' }
+Plug 'sjbach/lusty'
+Plug 'benmills/vimux'
+Plug 'rking/ag.vim'
 
 " JS
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'leshill/vim-json'
-Plugin 'itspriddle/vim-jquery'
-Plugin 'marijnh/tern_for_vim'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'leshill/vim-json'
+Plug 'itspriddle/vim-jquery', { 'for': 'javascript' }
+Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
 
 " Random languages
-Plugin 'Blackrush/vim-gocode'
-Plugin 'ChrisYip/Better-CSS-Syntax-for-Vim'
-Plugin 'acustodioo/vim-tmux'
-Plugin 'hallison/vim-markdown'
-Plugin 'scrooloose/syntastic'
-Plugin 'tfnico/vim-gradle'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mattn/emmet-vim'
-Plugin 'ingydotnet/yaml-vim'
+Plug 'Raimondi/delimitMate'
+Plug 'Blackrush/vim-gocode', { 'for': 'go' }
+Plug 'ChrisYip/Better-CSS-Syntax-for-Vim', { 'for': 'css' }
+Plug 'acustodioo/vim-tmux'
+Plug 'hallison/vim-markdown', { 'for': 'markdown' }
+Plug 'scrooloose/syntastic'
+Plug 'tfnico/vim-gradle'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
+Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
 
-call vundle#end()
-
-filetype plugin indent on
+call plug#end()
 
 syntax on
 silent! source ~/.vimrc-pre
@@ -94,10 +84,6 @@ if has('gui_macvim')
 endif
 
 colorscheme solarized
-set background=light
-if has('gui_running')
-else
-endif
 
 set backup
 set backupdir=~/.vim/backup//
