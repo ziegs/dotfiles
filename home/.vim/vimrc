@@ -42,7 +42,7 @@ Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
 Plug 'milkypostman/vim-togglelist'
 Plug 'mutewinter/swap-parameters'
 Plug 'keepcase.vim'
-Plug 'scratch.vim', { 'on': 'Scratch' }
+Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 Plug 'sjbach/lusty'
 Plug 'benmills/vimux'
 Plug 'rking/ag.vim'
@@ -108,7 +108,6 @@ set hidden
 set history=768
 set cf
 set autowrite
-au FocusLost * :wa
 
 set tabstop=2
 set backspace=2
@@ -214,13 +213,6 @@ let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
   \&& b:NERDTreeType == "primary") | q | endif
 
-"----------------
-" YankRing
-" ---------------
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
-let g:yankring_replace_n_pkey = '<M-p>'
-let g:yankring_replace_n_nkey = '<M-n>'
 
 " ---------------
 " Session
@@ -267,12 +259,6 @@ nmap <Leader>gd :Gdiff<CR>
 nmap <Leader>gx :wincmd h<CR>:q<CR>
 
 " ---------------
-" Zoomwin
-" ---------------
-" Zoom Window to Full Size
-nmap <silent> <leader>wo :ZoomWin<CR>
-
-" ---------------
 " ctrlp.vim
 " ---------------
 
@@ -281,13 +267,6 @@ let g:ctrlp_max_height = 10
 let g:ctrl_cmd = 'CtrlPMixed'
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 let g:ctrlp_working_path_mode = 'ra'
-
-" ---------------
-" Vundle
-" ---------------
-nmap <Leader>bi :BundleInstall<CR>
-nmap <Leader>bu :BundleInstall!<CR> " Because this also updates
-nmap <Leader>bc :BundleClean<CR>
 
 " ---------------
 " Strip Trailing White Space
@@ -330,7 +309,7 @@ nmap <silent> <leader>x :bd<CR>
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
 
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ag
 
 noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
@@ -344,8 +323,13 @@ let g:promptline_preset = {
         \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#battery() ],
         \'z' : [ promptline#slices#host() ]}
 
+" Scratch.vim
+let g:scratch_height = 20
+let g:scratch_top = 1
 
-"au FileType javascript call JavaScriptFold()
+" swap-parameters
+let g:SwapParametersMapForwards = '<leader>s'
+let g:SwapParametersMapBackwards = '<leader>S'
 
 " Post-config
 silent! source ~/.vimrc-post

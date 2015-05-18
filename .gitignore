@@ -14,3 +14,4 @@ plugin/
 .DS_Store
 plugged/
 plug.vim
+.netrwhist
