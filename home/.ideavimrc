@@ -1,0 +1,73 @@
+imap jj <Esc>
+
+noremap ,v <C-w>v<C-w>l
+noremap ,h <C-w>s<C-w>j
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <a-h> gT
+nnoremap <a-l> gt
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set relativenumber
+
+" TODO: replace , with <Leader> once IdeaVIM supports mapleader
+nnoremap ,<space> :noh<Enter>
+
+" copy pasta
+
+nnoremap ,y "*y
+nnoremap ,Y "*Y
+nnoremap ,p "*p
+nnoremap ,P "*P
+
+" actions
+nnoremap ,b :action ToggleBreakpointEnabled<cr>
+nnoremap ,q :action CloseContent<cr>
+nnoremap ,Q :action ReopenClosedTab<cr>
+nnoremap ,j :action EditorJoinLines<cr>
+nnoremap ,\ :action VimFilePrevious<cr>
+nnoremap ,e :action GotoClass<cr>
+nnoremap ,E :action Switcher<cr>
+nnoremap ,t :action FileStructurePopup<cr>
+nnoremap ,T :action GotoSymbol<cr>
+nnoremap ,a :action GotoAction<cr>
+
+" code navigation
+nnoremap ,] :action GotoImplementation<cr>
+nnoremap ,[ :action GotoSuperMethod<cr>
+nnoremap ,u :action FindUsages<cr>
+nnoremap \r :action RunClass<cr>
+nnoremap \d :action Debug<cr>
+nnoremap [] :action MethodUp<cr>
+nnoremap ][ :action MethodDown<cr>
+
+" code refactoring
+nnoremap ,rr :action RenameElement<cr>
+nnoremap ,re :action Refactorings.QuickListPopupAction<cr>
+nnoremap ,g :action Generate<cr>
+
+" unimpaired mappings
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+
+" built-in navigation to navigated items works better
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
+
+nnoremap g/ :action Find<cr>
+
+# one day maybe these will work
+autocmd BufReadPost * :set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber

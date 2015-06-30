@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-print 'Installing vim plugins'
-exit if !system("vim +PluginInstall +qall")
-
-print "Building YouCompleteMe"
-exit if !system("cd home/.vim/bundle/YouCompleteMe; ./install.sh --clang-completer")
-
-print "Done"

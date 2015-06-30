@@ -6,6 +6,8 @@ if [[ -f $HOME/.zshrc.pre ]]; then
   source $HOME/.zshrc.pre
 fi
 
+source $HOME/.zsh/functions
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -18,12 +20,19 @@ COMPLETION_WAITING_DOTS="true"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting $plugins) #vi-mode?
+plugins=(git brew tmux osx lol golang node npm bower grunt maven zsh-syntax-highlighting gradle $plugins) #vi-mode?
 
 source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin"
+
+# Set pager, override less
+export PAGER="vimpager"
+alias less="vimpager"
+alias zless="vimpager"
+
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'

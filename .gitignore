@@ -11,3 +11,7 @@ home/.vim/bundle/*
 !home/.vim/bundle/Vundle.vim
 eclim/
 plugin/
+.DS_Store
+plugged/
+plug.vim
+.netrwhist
