@@ -62,3 +62,4 @@ if [[ -f $HOME/.zshrc.post ]]; then
   source $HOME/.zshrc.post
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

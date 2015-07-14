@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
 "Navigation
 Plug 'kien/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'Lokaltog/vim-easymotion'
 
 " UI
