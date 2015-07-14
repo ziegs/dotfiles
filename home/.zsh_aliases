@@ -1,7 +1,0 @@
-alias aevim='PYTHONPATH=/usr/local/google_appengine/:$PYTHONPATH vim'
-alias disable_apsd='sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.apsd.plist'
-alias enable_apsd='sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.apsd.plist'
-
-# tmux
-alias tatt="tmux attach-session -t "
-alias tnew='new-tmux-from-dir-name'
