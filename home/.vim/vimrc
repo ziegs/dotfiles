@@ -30,6 +30,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 Plug 'edkolev/promptline.vim'
 
 " Commands
@@ -66,6 +67,7 @@ Plug 'tfnico/vim-gradle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
 Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
+Plug 'raichoo/haskell-vim'
 
 call plug#end()
 
@@ -329,6 +331,12 @@ let g:scratch_top = 1
 " swap-parameters
 let g:SwapParametersMapForwards = '<leader>s'
 let g:SwapParametersMapBackwards = '<leader>S'
+
+" haskell
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let hs_highlight_delimiters = 1
 
 " Post-config
 silent! source ~/.vimrc-post
