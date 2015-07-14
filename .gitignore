@@ -15,3 +15,5 @@ plugin/
 plugged/
 plug.vim
 .netrwhist
+.zsh_aliases
+.zpath
