@@ -212,8 +212,6 @@ bindsym $mod+mod1+s scratchpad show
 # x crap
 exec xrdb -merge ~/.Xresources
 exec nm-applet
-exec /google/data/ro/projects/devtools/blaze_notify/blaze_notify.par
-
 
 # restore window state
 exec --no-startup-id "i3-msg 'workspace 1: corp; append_layout ~/.i3/workspace-1.json'"
