@@ -9,6 +9,9 @@ home/.vim/undo/*
 !home/.vim/undo/.track
 home/.vim/bundle/*
 !home/.vim/bundle/Vundle.vim
+home/.tmux/plugins/*
+!home/.tmux/plugins/tpm
+home/.tmux/resurrect
 eclim/
 plugin/
 .DS_Store

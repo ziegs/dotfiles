@@ -2,3 +2,6 @@
   path = home/.zprezto
   url = git@github.com:ziegs/prezto.git
   branch = master
+[submodule "home/.tmux/plugins/tpm"]
+	path = home/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
