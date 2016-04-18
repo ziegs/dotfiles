@@ -77,9 +77,9 @@ URxvt.scrollstyle: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=13:antialias=true:hinting=true
+URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=18:antialias=true:hinting=true
 
-URxvt.perl-ext-common: url-select,keyboard-select,clipboard
+URxvt.perl-ext-common: url-select,keyboard-select,clipboard,font-size
 URxvt.perl-ext: default
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/xdg-open
@@ -91,3 +91,9 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+Xft.dpi: 144
