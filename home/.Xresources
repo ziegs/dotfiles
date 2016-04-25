@@ -17,26 +17,26 @@
 
 ! Dark
 
-! #define S_base03        #002b36
-! #define S_base02        #073642
-! #define S_base01        #586e75
-! #define S_base00        #657b83
-! #define S_base0         #839496
-! #define S_base1         #93a1a1
-! #define S_base2         #eee8d5
-! #define S_base3         #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
 
 ! Light
 
-#define S_base03        #fdf6e3
-#define S_base02        #eee8d5
-#define S_base01        #93a1a1
-#define S_base00        #839496
-#define S_base0         #657b83
-#define S_base1         #586e75
-#define S_base2         #073642
-#define S_base3         #002b36
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #073642
+!#define S_base3         #002b36
 
 
 ! To only apply colors to your terminal, for example, prefix
@@ -77,7 +77,7 @@ URxvt.scrollstyle: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=18:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=18:antialias=true:hinting=true
+URxvt*font: xft:Hack:pixelsize=14:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=14:antialias=true:hinting=true
 
 URxvt.perl-ext-common: url-select,keyboard-select,clipboard,font-size
 URxvt.perl-ext: default
@@ -91,9 +91,10 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
-URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+
+URxvt.keysym.C-Up: perl:font-size:increase
+URxvt.keysym.C-Down: perl:font-size:decrease
+URxvt.keysym.C-S-Up: perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
 Xft.dpi: 144
