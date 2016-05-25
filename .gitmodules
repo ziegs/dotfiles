@@ -1,6 +1,6 @@
 [submodule "home/.zprezto"]
   path = home/.zprezto
-  url = git@github.com:ziegs/prezto.git
+  url = sso://user/ziegs/prezto
   branch = master
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
