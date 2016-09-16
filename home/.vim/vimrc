@@ -18,8 +18,7 @@ let maplocalleader = "\\"
 call plug#begin('~/.vim/plugged')
 
 "Navigation
-Plug 'kien/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+Plug '/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 
 " UI
@@ -45,7 +44,9 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'mutewinter/swap-parameters'
 Plug 'keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
-Plug 'sjbach/lusty'
+if !has('nvim')
+  Plug 'sjbach/lusty'
+endif
 Plug 'benmills/vimux'
 Plug 'rking/ag.vim'
 
@@ -86,6 +87,7 @@ if has('gui_macvim')
 endif
 
 colorscheme solarized
+call togglebg#map("<F5>")
 
 set backup
 set backupdir=~/.vim/backup//
@@ -265,9 +267,17 @@ nmap <Leader>gx :wincmd h<CR>:q<CR>
 " ---------------
 
 " Ensure max height isn't too large.
-let g:ctrlp_max_height = 10
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_max_height = 10
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_max_files = 100000
+"
+" FZF Config -- make it act like CtrlP
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <c-p> :FZF<cr>
 
 " ---------------
 " Strip Trailing White Space
