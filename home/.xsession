@@ -18,6 +18,6 @@ xrandr --dpi 96
 # start urxvt daemon
 urxvtd -q -f -o
 
-(sleep 20 && xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY)
+xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
 
 exec i3

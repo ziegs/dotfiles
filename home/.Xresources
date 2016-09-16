@@ -71,13 +71,15 @@
 
 ! URxvt config
 
+URxvt.saveLines: 1000000
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.scrollstyle: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-URxvt*font: xft:Hack:pixelsize=14:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=14:antialias=true:hinting=true
+URxvt*font: xft:Hack:pixelsize=16:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=16:antialias=true:hinting=true
+URxvt*boldFont: xft:Hack:pixelsize=16:antialias=true:hinting=true,weight=bold
 
 URxvt.perl-ext-common: url-select,keyboard-select,clipboard,font-size
 URxvt.perl-ext: default
@@ -88,6 +90,10 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysm.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.C-minus: perl:font-size:decrease
+URxvt.keysym.C-equal: perl:font-size:increase
+
+URxvt.font-size.step: 1
 URxvt.clipboard.autocopy: true
 URxvt.clipboard.copycmd: xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
