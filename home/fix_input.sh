@@ -27,6 +27,9 @@ synclient HorizScrollDelta=-114
 # Turn on palm detect (doesn't really work :/)
 synclient PalmDetect=1
 
+# Three finger click
+synclient TapButton3=2
+
 # Run syndaemon if it's not already running
 sdpid=`ps -ef|grep -v grep|grep syndaemon|awk '{print $2}'`
 if [ -z $sdpid ]
