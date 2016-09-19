@@ -28,7 +28,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tomtom/quickfixsigns_vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
-Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'edkolev/promptline.vim'
@@ -262,22 +261,24 @@ nmap <Leader>gd :Gdiff<CR>
 " Exit a diff by closing the diff window
 nmap <Leader>gx :wincmd h<CR>:q<CR>
 
-" ---------------
-" ctrlp.vim
-" ---------------
-
-" Ensure max height isn't too large.
-"let g:ctrlp_max_height = 10
-"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-"let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_max_files = 100000
-"
 " FZF Config -- make it act like CtrlP
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \ }
-nnoremap <c-p> :FZF<cr>
+nnoremap <silent> <c-p> :FZF -m<cr>
+" <M-p> for open buffers
+nnoremap <silent> <M-p> :Buffers<cr>
+
+" <M-S-p> for MRU
+nnoremap <silent> <M-S-p> :History<cr>
+
+" Better command history
+command! CmdHist call fzf#vim#command_history()
+nnoremap q: :CmdHist<CR>
+" Better search history
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap q/ :QHist<CR>
 
 " ---------------
 " Strip Trailing White Space
