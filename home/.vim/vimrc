@@ -24,10 +24,11 @@ Plug 'Lokaltog/vim-easymotion'
 " UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tomtom/quickfixsigns_vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
+Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'edkolev/promptline.vim'
@@ -51,10 +52,10 @@ Plug 'rking/ag.vim'
 
 " JS
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx'
+"Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
-Plug 'itspriddle/vim-jquery', { 'for': 'javascript' }
 Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
 
 " Random languages
@@ -63,9 +64,10 @@ Plug 'Blackrush/vim-gocode', { 'for': 'go' }
 Plug 'ChrisYip/Better-CSS-Syntax-for-Vim', { 'for': 'css' }
 Plug 'acustodioo/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
+"Plug 'scrooloose/syntastic'
 Plug 'tfnico/vim-gradle'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
 Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
 
@@ -269,6 +271,9 @@ let g:fzf_action = {
 nnoremap <silent> <c-p> :FZF -m<cr>
 " <M-p> for open buffers
 nnoremap <silent> <M-p> :Buffers<cr>
+if has('nvim')
+  nmap <Leader>lj :Buffers<cr>
+endif 
 
 " <M-S-p> for MRU
 nnoremap <silent> <M-S-p> :History<cr>
@@ -343,6 +348,14 @@ let g:SwapParametersMapForwards = '<leader>s'
 let g:SwapParametersMapBackwards = '<leader>S'
 
 let delimitMate_expand_cr = 1
+
+if getcwd() =~ "kernel"
+  let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf_kernel.py'
+else
+  let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf_android.py'
+endif
+
+let g:jsx_ext_required = 0
 
 " Post-config
 silent! source ~/.vimrc-post

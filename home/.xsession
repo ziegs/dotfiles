@@ -1,8 +1,8 @@
 # Xsession config
 
 export ALTERNATE_EDITOR=""
-export EDITOR="vim"
-export TERMINAL="urxvtcd"
+export EDITOR="nvim"
+export TERMINAL="urxvt"
 export DESKTOP_SESSION=gnome # Makes Chrome pick up proxy settings correctly from gconf
 
 # Disable bell
