@@ -17,6 +17,8 @@ let maplocalleader = "\\"
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 "Navigation
 Plug '/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -31,7 +33,6 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'edkolev/promptline.vim'
 
 " Commands
 Plug 'scrooloose/nerdcommenter'
@@ -42,12 +43,8 @@ Plug 'godlygeek/tabular', { 'on': ['Tab', 'Tabularize'] }
 Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
 Plug 'milkypostman/vim-togglelist'
 Plug 'mutewinter/swap-parameters'
-Plug 'keepcase.vim'
+Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
-if !has('nvim')
-  Plug 'sjbach/lusty'
-endif
-Plug 'benmills/vimux'
 Plug 'rking/ag.vim'
 
 " JS
@@ -65,11 +62,11 @@ Plug 'ChrisYip/Better-CSS-Syntax-for-Vim', { 'for': 'css' }
 Plug 'acustodioo/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
 Plug 'neomake/neomake'
-"Plug 'scrooloose/syntastic'
 Plug 'tfnico/vim-gradle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
 Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 call plug#end()
 
@@ -87,6 +84,7 @@ if has('gui_macvim')
   set macmeta
 endif
 
+set bg=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -96,44 +94,34 @@ set directory=~/.vim/tmp//
 set undodir=~/.vim/tmp/undo//
 set noswapfile
 
-set ruler
 set nu
 set nowrap
-set laststatus=2
 set cmdheight=2
-set encoding=utf-8
 if exists("+colorcolumn")
   set colorcolumn=+1
 endif
 
 syntax on
-set autoread
-set wildmenu
 set hidden
-set history=768
 set cf
 set autowrite
 
 set tabstop=2
-set backspace=2
 set shiftwidth=2
 set cindent
-set autoindent
-set smarttab
 set expandtab
 
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set incsearch
 set hlsearch
 set gdefault
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
 set sidescrolloff=2
 set numberwidth=4
-nnoremap <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -332,12 +320,6 @@ noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
 
 let g:airline_powerline_fonts = 0
-let g:promptline_preset = {
-        \'a': [ promptline#slices#user() ],
-        \'b': [ promptline#slices#cwd() ],
-        \'c' : [ promptline#slices#vcs_branch() ],
-        \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#battery() ],
-        \'z' : [ promptline#slices#host() ]}
 
 " Scratch.vim
 let g:scratch_height = 20

@@ -40,6 +40,14 @@ nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>T :action GotoSymbol<cr>
 nnoremap <leader>a :action GotoAction<cr>
 
+" Refactoring
+nn <leader>F :action ReformatCode<CR>
+nn <leader>o :action RearrangeCode<CR>
+nn <leader>I :action OptimizeImports<CR>
+nn <leader>R :action Refactorings.QuickListPopupAction<CR>
+nn <leader>r :action RenameElement<CR>
+nn <leader>cr :action CopyReference<CR>
+
 " code navigation
 nnoremap <leader>] :action GotoImplementation<cr>
 nnoremap <leader>[ :action GotoSuperMethod<cr>
