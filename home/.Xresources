@@ -17,26 +17,26 @@
 
 ! Dark
 
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+!#define S_base03        #002b36
+!#define S_base02        #073642
+!#define S_base01        #586e75
+!#define S_base00        #657b83
+!#define S_base0         #839496
+!#define S_base1         #93a1a1
+!#define S_base2         #eee8d5
+!#define S_base3         #fdf6e3
 
 
 ! Light
 
-!#define S_base03        #fdf6e3
-!#define S_base02        #eee8d5
-!#define S_base01        #93a1a1
-!#define S_base00        #839496
-!#define S_base0         #657b83
-!#define S_base1         #586e75
-!#define S_base2         #073642
-!#define S_base3         #002b36
+#define S_base03        #fdf6e3
+#define S_base02        #eee8d5
+#define S_base01        #93a1a1
+#define S_base00        #839496
+#define S_base0         #657b83
+#define S_base1         #586e75
+#define S_base2         #073642
+#define S_base3         #002b36
 
 
 ! To only apply colors to your terminal, for example, prefix
@@ -69,6 +69,9 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
+xterm*dynamicColors: true
+urxvt*dynamicColors: on
+
 ! URxvt config
 
 URxvt.saveLines: 1000000
@@ -78,20 +81,21 @@ URxvt.scrollstyle: false
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-URxvt*font: xft:Hack:pixelsize=16:antialias=true:hinting=true,xft:Meslo\ LG\ M\ DZ\ for\ Powerline:pixelsize=16:antialias=true:hinting=true
-URxvt*boldFont: xft:Hack:pixelsize=16:antialias=true:hinting=true,weight=bold
+URxvt*font: xft:Hack:pixelsize=12
+URxvt*boldFont: xft:Hack:pixelsize=12:antialias=true:hinting=true,weight=bold
 
-URxvt.perl-ext-common: url-select,keyboard-select,clipboard,font-size
+URxvt.perl-ext-common: url-select,keyboard-select,clipboard,font-size,urxvt-colors
 URxvt.perl-ext: default
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysm.M-v: perl:clipboard:paste
+URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.C-minus: perl:font-size:decrease
 URxvt.keysym.C-equal: perl:font-size:increase
+URxvt.keysym.F12: perl:urxvt-colors:
 
 URxvt.font-size.step: 1
 URxvt.clipboard.autocopy: true
@@ -103,4 +107,5 @@ URxvt.keysym.C-Down: perl:font-size:decrease
 URxvt.keysym.C-S-Up: perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
-Xft.dpi: 144
+
+rofi.switchers: window,run,Workspace:i3_switch_workspaces.sh
