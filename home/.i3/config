@@ -189,7 +189,7 @@ bindsym XF86Explorer exec ~/.i3/touchpad_toggle.sh
 bar {
 #  status_command i3blocks
 #status_command ~/Downloads/laptop
-  status_command ~/.i3/laptop-bar-test
+  status_command ~/.i3/laptop-bar-test -wlan=wlp4s0
   strip_workspace_numbers yes
   # solarized
   colors {
@@ -238,8 +238,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+mod1+s scratchpad show
 
 exec --no-startup-id compton -b --backend glx #-cCGfF -o .5 -O 200 -I 200 -t 0 -l 0 -r 8 -D2 -m 0.88 -e 0.9  --detect-transient --detect-client-leader
-
 exec --no-startup-id ~/i3_startup.sh
 exec --no-startup-id ~/fix_input.sh
 exec --no-startup-id thunar --daemon
+exec --no-startup-id blueman-applet
 exec --no-startup-id gtk-redshift

@@ -6,6 +6,8 @@ export VISUAL="nvim"
 export TERMINAL="urxvt"
 export DESKTOP_SESSION=gnome # Makes Chrome pick up proxy settings correctly from gconf
 
+export GTK_IM_MODULE=xim
+
 # Disable bell
 xset -b
 
