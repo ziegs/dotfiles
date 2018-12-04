@@ -99,8 +99,8 @@ URxvt.keysym.F12: perl:urxvt-colors:
 
 URxvt.font-size.step: 1
 URxvt.clipboard.autocopy: true
-URxvt.clipboard.copycmd: xsel -ib
-URxvt.clipboard.pastecmd: xsel -ob
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 URxvt.keysym.C-Up: perl:font-size:increase
 URxvt.keysym.C-Down: perl:font-size:decrease
