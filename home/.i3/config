@@ -192,9 +192,9 @@ bindsym $mod+XF86Display exec arandr
 # finds out, if available)
 bar {
 #  status_command i3blocks
-#status_command ~/Downloads/laptop
   status_command ~/.i3/laptop-bar-test -wlan=wlp4s0
   strip_workspace_numbers yes
+  font pango:Hack 10
   # solarized
   colors {
     background #073642
@@ -221,6 +221,8 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 # window-specific configs
+for_window [class="(G|g)oogle-chrome"] border none
+for_window [class="(G|g)oogle-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Google-chrome.*" instance="crx_fahmaaghhglfmonjliepjlchgpgfmobi"] floating enable move scratchpad
 for_window [title="Page.*Unresponsive"] floating enable
 for_window [title="Android Emulator"] floating enable # android emulator title
@@ -245,7 +247,7 @@ bindsym $mod+mod1+s scratchpad show
 exec --no-startup-id compton -b --backend glx #-cCGfF -o .5 -O 200 -I 200 -t 0 -l 0 -r 8 -D2 -m 0.88 -e 0.9  --detect-transient --detect-client-leader
 #exec --no-startup-id ~/i3_startup.sh
 exec --no-startup-id ~/fix_input.sh
-exec dex -a -e x-cinnamon
+exec dex -ae i3
 exec dex /usr/share/applications/cinnamon-screensaver.desktop
 
 exec --no-startup-id thunar --daemon
