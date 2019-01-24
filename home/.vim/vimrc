@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 "Navigation
-Plug '/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 
 " UI
@@ -85,7 +85,6 @@ if has('gui_macvim')
   set macmeta
 endif
 
-set bg=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -144,8 +143,15 @@ set list
 set listchars=""
 " a tab should display as "  ", trailing whitespace as "."
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
-highlight NonText ctermfg=DarkGrey
-highlight SpecialKey ctermbg=0 ctermfg=DarkRed
+
+" Auto-highlight trailing whitespace (unless currently editing the line).
+highlight ExtraWhitespace term=reverse cterm=reverse ctermfg=1 guifg=White guibg=Red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " Demo: tab & trailing spaces should be red	text    
 
 set noerrorbells
