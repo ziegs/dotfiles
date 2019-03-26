@@ -32,6 +32,8 @@ values."
    dotspacemacs-configuration-layers
    '(
      go
+     (go :variables go-use-gometalinter t
+         go-tab-width 2)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -322,7 +324,7 @@ you should place your code here."
   (setq ycmd-server-command '("python" "/home/ziegs/.vim/plugged/YouCompleteMe/third_party/ycmd/ycmd"))
   (setq ycmd-force-semantic-completion t)
 
-  (go :variables go-use-gometalinter t)
+  (setq org-agenda-file '("~/orgnotes"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

@@ -86,6 +86,7 @@ if has('gui_macvim')
 endif
 
 colorscheme solarized
+set bg=light
 call togglebg#map("<F5>")
 
 set backup
