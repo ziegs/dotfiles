@@ -34,6 +34,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'jceb/vim-orgmode'
+Plug 'justincampbell/vim-eighties'
 
 " Commands
 Plug 'scrooloose/nerdcommenter'
