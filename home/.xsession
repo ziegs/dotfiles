@@ -1,8 +1,8 @@
 # Xsession config
 
 export ALTERNATE_EDITOR=""
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 export TERMINAL="x-terminal-emulator"
 export DESKTOP_SESSION="gnome" # Makes Chrome pick up proxy settings correctly from gconf
 
@@ -13,7 +13,7 @@ xset -b
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
-xrandr --output eDP1 --primary 
+xrandr --output eDP1 --primary
 
 # start urxvt daemon
 #urxvtd -q -f -o

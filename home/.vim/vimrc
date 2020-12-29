@@ -43,15 +43,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular', { 'on': ['Tab', 'Tabularize'] }
 Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
 Plug 'milkypostman/vim-togglelist'
-Plug 'mutewinter/swap-parameters'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 Plug 'rking/ag.vim'
 
 " JS
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx'
-"Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
@@ -112,8 +109,6 @@ set shiftwidth=2
 set cindent
 set expandtab
 
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set hlsearch
@@ -301,9 +296,6 @@ endfunction
 command! StripTrailingWhiteSpace :call Preserve("%s/\\s\\+$//e")<CR>
 
 imap jj <Esc>
-imap uu _
-imap hh =>
-imap aa @
 
 map <S-Enter> O<ESC>
 map <Enter> o<ESC>
@@ -322,7 +314,7 @@ nmap <silent> <leader>x :bd<CR>
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
 
-nnoremap <leader>a :Ag
+nnoremap <leader>a :Ag 
 
 noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
@@ -333,19 +325,7 @@ let g:airline_powerline_fonts = 0
 let g:scratch_height = 20
 let g:scratch_top = 1
 
-" swap-parameters
-let g:SwapParametersMapForwards = '<leader>s'
-let g:SwapParametersMapBackwards = '<leader>S'
-
 let delimitMate_expand_cr = 1
-
-if getcwd() =~ "kernel"
-  let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf_kernel.py'
-else
-  let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf_android.py'
-endif
-
-let g:jsx_ext_required = 0
 
 " Post-config
 silent! source ~/.vimrc-post

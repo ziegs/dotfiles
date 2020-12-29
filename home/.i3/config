@@ -34,6 +34,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run -fuzzy
+bindsym $mod+Shift+d exec rofi -show drun -modi drun
 bindsym $mod+Tab exec ~/.i3/rofi_modi.sh
 bindsym $mod+g exec rofi -show Workspace -fuzzy
 
@@ -251,4 +252,3 @@ exec dex --autostart --environment x-cinnamon
 exec dex /usr/share/applications/cinnamon-screensaver.desktop
 
 exec --no-startup-id fix_input
-exec --no-startup-id thunar --daemon

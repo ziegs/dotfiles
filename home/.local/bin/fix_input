@@ -1,9 +1,25 @@
 #!/bin/sh
 
-xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
+# First find the X input ID corresponding to the
+# keyboard we're interested in.
+kbd_id() {
+  keyboard="$1"
+  xinput list |
+  sed -n "s/.*$keyboard.*id=\([0-9]*\).*keyboard.*/\1/p"
+}
+# In our case the USB:ID was shown in the `xinput list` output,
+# but this is unusual and you may have to match
+# on names or even correlate with /dev/input/by-id/*
+realforce_id=$(kbd_id 'Topre Corporation Realforce 87')
+[ "$realforce_id" ] && xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd -i $realforce_id $DISPLAY
+
+lenovo_id=$(kbd_id 'AT Translated Set 2 keyboard')
+[ "$lenovo_id" ] && xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd -i $lenovo_id $DISPLAY
+
+#xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
 
 trackpoint="TPPS/2 IBM TrackPoint"
-touchpad="SynPS/2 Synaptics TouchPad"
+touchpad="Synaptics TM3289-021"
 
 xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1 # correct scrolling direction
 xinput set-prop "$touchpad" "libinput Tapping Enabled" 1 # tap-to-click
