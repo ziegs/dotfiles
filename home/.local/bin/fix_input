@@ -11,10 +11,10 @@ kbd_id() {
 # but this is unusual and you may have to match
 # on names or even correlate with /dev/input/by-id/*
 realforce_id=$(kbd_id 'Topre Corporation Realforce 87')
-[ "$realforce_id" ] && xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd -i $realforce_id $DISPLAY
+[ "$realforce_id" ] && setxkbmap -device $realforce_id -option ctrl:nocaps,altwin:swap_lalt_lwin
 
 lenovo_id=$(kbd_id 'AT Translated Set 2 keyboard')
-[ "$lenovo_id" ] && xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd -i $lenovo_id $DISPLAY
+[ "$lenovo_id" ] && setxkbmap -device $lenovo_id -option ctrl:nocaps,altwin:swap_lalt_lwin
 
 #xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
 

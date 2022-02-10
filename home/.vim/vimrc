@@ -26,6 +26,7 @@ Plug 'Lokaltog/vim-easymotion'
 " UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'farmergreg/vim-lastplace'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tomtom/quickfixsigns_vim'
 Plug 'altercation/vim-colors-solarized'
@@ -33,38 +34,29 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'jceb/vim-orgmode'
+Plug 'mhinz/vim-signify'
 
 " Commands
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
-Plug 'godlygeek/tabular', { 'on': ['Tab', 'Tabularize'] }
-Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
 Plug 'milkypostman/vim-togglelist'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
-Plug 'rking/ag.vim'
 
-" JS
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+" Languages
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
-Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
-
-" Random languages
 Plug 'Raimondi/delimitMate'
-Plug 'Blackrush/vim-gocode', { 'for': 'go' }
-Plug 'ChrisYip/Better-CSS-Syntax-for-Vim', { 'for': 'css' }
+Plug 'ap/vim-css-color'
+Plug 'duganchen/vim-soy'
 Plug 'acustodioo/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
 Plug 'neomake/neomake'
-Plug 'tfnico/vim-gradle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
-Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
-Plug 'fatih/vim-go', { 'for': 'go' }
 
 call plug#end()
 
@@ -83,7 +75,7 @@ if has('gui_macvim')
 endif
 
 colorscheme solarized
-set bg=light
+set bg=dark
 call togglebg#map("<F5>")
 
 set backup
@@ -109,6 +101,7 @@ set shiftwidth=2
 set cindent
 set expandtab
 
+set clipboard=unnamedplus
 set ignorecase
 set smartcase
 set hlsearch
@@ -259,12 +252,10 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \ }
-nnoremap <silent> <c-p> :FZF -m<cr>
+nnoremap <silent> <c-p> :Files<cr>
 " <M-p> for open buffers
 nnoremap <silent> <M-p> :Buffers<cr>
-if has('nvim')
-  nmap <Leader>lj :Buffers<cr>
-endif 
+nmap <Leader>lj :Buffers<cr>
 
 " <M-S-p> for MRU
 nnoremap <silent> <M-S-p> :History<cr>

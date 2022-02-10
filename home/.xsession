@@ -4,7 +4,7 @@ export ALTERNATE_EDITOR=""
 export EDITOR="vim"
 export VISUAL="vim"
 export TERMINAL="x-terminal-emulator"
-export DESKTOP_SESSION="gnome" # Makes Chrome pick up proxy settings correctly from gconf
+export DESKTOP_SESSION="cinnamon" # Makes Chrome pick up proxy settings correctly from gconf
 
 export GTK_IM_MODULE=xim
 
@@ -15,10 +15,9 @@ xset -b
 
 xrandr --output eDP1 --primary
 
-# start urxvt daemon
-#urxvtd -q -f -o
-
-xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
+## Turn monitor off 30 seconds after locking
+export XSECURELOCK_BLANK_DPMS_STATE=off
+export XSECURELOCK_BLANK_TIMEOUT=30
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin":$PATH
