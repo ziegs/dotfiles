@@ -248,7 +248,7 @@ for_window [class="Gnome-calculator"] mark "calc", floating enable move scratchp
 bindsym XF86Calculator [con_mark="calc"] scratchpad show
 
 # Chrome
-for_window [class="(G|g)oogle-chrome" window_role="pop-up"] floating enable, border normal
+for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [title="Page.*Unresponsive"] floating enable
 for_window [title="Confirm Permissions"] floating enable, border normal # permissions popup
 
@@ -261,6 +261,7 @@ bindsym Shift+XF86Mail [con_mark="chat"] move workspace current focus
 for_window [class="Google-chrome.*" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] mark "music", border none floating enable move scratchpad
 bindsym $mod+Shift+m [con_mark="music"] scratchpad show
 bindsym XF86Tools [con_mark="music"] scratchpad show
+for_window [title="Task Manager - Google Chrome"] floating enable, border normal
 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 
@@ -277,11 +278,15 @@ input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
 }
 
-input "1739:52619:SYNA8006:00_06CB:CD8B_Touchpad" {
+input "type:touchpad" {
   natural_scroll enabled
   pointer_accel .75
   tap enabled
   tap_button_map lrm
+}
+
+input "2:10:TPPS/2_Elan_TrackPoint" {
+  pointer_accel .90
 }
 
 include /etc/sway/config.d/*
