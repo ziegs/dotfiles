@@ -1,0 +1,3 @@
+on-button-left=invoke-default-action
+on-button-middle=exec makoctl menu -n "$id" dmenu -p 'Selection action: '
+on-button-right=dismiss

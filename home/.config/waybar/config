@@ -1,0 +1,192 @@
+// -*- mode: json -*-
+	{
+		"position": "top",
+		"layer": "bottom",
+		"margin-top": 0,
+		"margin-right": 0,
+		"margin-left": 0,
+		"modules-center": [
+			"sway/workspaces"
+		],
+		"modules-left": [
+			"battery",
+			"disk#1",
+			"memory",
+			"cpu",
+			"custom/cputemp",
+			"custom/separator",
+			"idle_inhibitor",
+			"sway/mode"
+		],
+		"modules-right": [
+			"backlight",
+			"pulseaudio",
+			"custom/separator",
+			"tray",
+			"custom/separator",
+			"clock",
+			"custom/weather",
+			"custom/powermenu"
+		],
+		"sway/workspaces": {
+			"disable-scroll": true,
+			"all-outputs": false,
+			"format": "{name} {icon}",
+			"format-icons": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"urgent": "",
+				"focused": "",
+				"default": ""
+			}
+		},
+		"idle_inhibitor": {
+			"format": "{icon}",
+			"format-icons": {
+				"activated": "",
+				"deactivated": ""
+			}
+		},
+		"backlight": {
+			"format": " {percent}%",
+			"format-icons": [
+				"",
+				""
+			],
+			"on-scroll-up": "brightnessctl set +1%",
+			"on-scroll-down": "brightnessctl set 1%-"
+		},
+		"clock": {
+			"format": "{:%a %d %b %H:%M}",
+			"tooltip": false
+		},
+		"pulseaudio": {
+			"format": "{icon} {volume}%  {format_source}",
+			"format-bluetooth": "{icon} {volume}%  {format_source}",
+			"format-bluetooth-muted": " {icon}  {format_source}",
+			"format-muted": " {format_source}",
+			"format-source": " {volume}%",
+			"format-source-muted": "",
+			"format-icons": {
+				"headphone": "",
+				"hands-free": "",
+				"headset": "",
+				"phone": "",
+				"portable": "",
+				"car": "",
+				"default": [
+					"",
+					"",
+					""
+				]
+			},
+			"on-click": "pavucontrol"
+		},
+		"memory": {
+			"states": {
+				"good": 0,
+				"warning": 60,
+				"critical": 80
+			},
+			"interval": 5,
+			"format": "",
+			"on-click": "kitty bpytop"
+		},
+		"cpu": {
+			"states": {
+				"good": 0,
+				"warning": 70,
+				"critical": 95
+			},
+			"interval": 1,
+			"format": "",
+			"on-click": "kitty bpytop"
+		},
+		"battery": {
+			"states": {
+				"good": 100,
+				"warning": 30,
+				"critical": 15
+			},
+			"format": "{icon}",
+			"format-icons": [
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		"disk#1": {
+			"states": {
+				"good": 0,
+				"warning": 70,
+				"critical": 95
+			},
+			"interval": 5,
+			"format": "",
+			"path": "/"
+		},
+		"sway/mode": {
+			"format": "{}"
+		},
+		"wlr/taskbar": {
+			"all-outputs": false,
+			"format": "{icon} {title:.15}",
+			"icon-theme": "Tela-circle-blue-dark",
+			"icon-size": 14,
+			"on-click": "activate",
+			"on-middle-click": "close",
+			"on-right-click": "minimize"
+		},
+		"tray": {
+			"icon-size": 12,
+			"spacing": 10
+		},
+		"custom/separator": {
+			"format": "|",
+			"tooltip": false
+		},
+		"custom/weather": {
+			"format": "{}",
+			"exec": "~/.config/waybar/modules/weather.sh",
+			"interval": 3600
+		},
+		"custom/swap": {
+			"format": " {}",
+			"interval": 5,
+			"exec": "free -h | grep Swap | awk '{print $3}'"
+		},
+		"custom/cputemp": {
+			"interval": 2,
+			"return-type": "json",
+			"format": "{icon}",
+			"format-icons": [
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"exec": "~/.config/waybar/modules/cputemp",
+			"on-click": "kitty bpytop"
+		},
+		"custom/separator": {
+			"format": "|",
+			"tooltip": false
+		},
+		"custom/powermenu": {
+			"format": "",
+			"on-click": "nwgbar",
+			"tooltip": false
+		},
+		/*"custom/spotify": {*/
+			/*"interval": 1,*/
+			/*"return-type": "json",*/
+			/*"exec": "~/.config/waybar/modules/spotify.sh",*/
+			/*"exec-if": "pgrep spotify",*/
+			/*"escape": true*/
+		/*},*/
+	}
