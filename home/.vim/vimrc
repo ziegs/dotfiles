@@ -45,6 +45,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
 Plug 'milkypostman/vim-togglelist'
+"Plug 'mutewinter/swap-parameters'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 
