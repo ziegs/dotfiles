@@ -23,8 +23,17 @@ output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.pn
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
+smart_borders no_gaps
+smart_gaps on
+
 default_border pixel 1
 default_floating_border pixel 2
+titlebar_border_thickness 1
+gaps                top         10
+gaps                bottom  0
+gaps                left  5
+gaps                right 5
+gaps                inner   10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -239,13 +248,13 @@ for_window [class="jetbrains-studio" title="Android Virtual Device Manager"] flo
 for_window [class="Google Android Emulator"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Thunar" title="File Operation Progress"] floating enable
-for_window [class="vlc"] floating enable
-for_window [class="Pavucontrol"] floating enable, move right 632, move down 336
+for_window [app_id="vlc"] floating enable
+for_window [app_id="pavucontrol"] sticky enable; floating enable, move right 632, move down 336
+for_window [app_id="galculator"] floating enable; sticky enable
+for_window [app_id="termfloat"] floating enable; sticky enable;  move left 0, move top 0
 for_window [class="openrct2"] floating enable
-for_window [class="Xpra-Launcher"] floating enable
 for_window [title="Event Tester"] floating enable
-for_window [class="Gnome-calculator"] mark "calc", floating enable move scratchpad
-bindsym XF86Calculator [con_mark="calc"] scratchpad show
+bindsym XF86Calculator [con_mark="calc"] exec galculator
 
 # Chrome
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
@@ -258,17 +267,19 @@ bindsym XF86Mail [con_mark="chat"] focus
 bindsym Shift+XF86Mail [con_mark="chat"] move workspace current focus
 
 # Music player (YouTube Music)
-for_window [class="Google-chrome.*" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] mark "music", border none floating enable move scratchpad
+for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Profile_2"] mark "music", border none floating enable move scratchpad
 bindsym $mod+Shift+m [con_mark="music"] scratchpad show
 bindsym XF86Tools [con_mark="music"] scratchpad show
 for_window [title="Task Manager - Google Chrome"] floating enable, border normal
 
+for_window [title="Picture in picture"] floating enable
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
 
 exec dex --autostart --environment sway
+
 exec mako
 bindsym $mod+grave makoctl dismiss
 bindsym $mod+shift+grave makoctl invoke

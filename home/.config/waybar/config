@@ -14,6 +14,7 @@
       "memory",
       "cpu",
       "custom/cputemp",
+      "network",
       "custom/separator",
       "idle_inhibitor",
       "sway/mode"
@@ -92,7 +93,7 @@
       },
       "interval": 5,
       "format": "",
-      "on-click": "kitty bpytop"
+      "on-click": "kitty --class=termfloat bpytop"
     },
     "cpu": {
       "states": {
@@ -102,15 +103,17 @@
       },
       "interval": 1,
       "format": "",
-      "on-click": "kitty bpytop"
+      "on-click": "kitty --class=termfloat bpytop"
     },
     "battery": {
       "states": {
-        "good": 100,
+        "charged": 100,
+        "good": 99,
         "warning": 30,
         "critical": 15
       },
-      "format": "{icon}",
+      "format-charged": "Charged {icon}",
+      "format": "{time} ({capacity}%) {icon}",
       "format-icons": [
         "",
         "",
@@ -171,7 +174,7 @@
         ""
       ],
       "exec": "~/.config/waybar/modules/cputemp",
-      "on-click": "kitty bpytop"
+      "on-click": "kitty --class=termfloat bpytop"
     },
     "custom/separator": {
       "format": "|",
@@ -181,5 +184,11 @@
       "format": "",
       "on-click": "nwg-bar",
       "tooltip": false
+    },
+     "network": {
+        "format-wifi": "{essid} {signalStrength}% ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "interval": 3
     },
   }
