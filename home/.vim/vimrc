@@ -17,57 +17,49 @@ let maplocalleader = "\\"
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 "Navigation
-Plug 'kien/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 
 " UI
-Plug 'bling/vim-airline'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'farmergreg/vim-lastplace'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tomtom/quickfixsigns_vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
-Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'edkolev/promptline.vim'
+Plug 'mhinz/vim-signify'
+Plug 'jceb/vim-orgmode'
+Plug 'justincampbell/vim-eighties'
 
 " Commands
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
-Plug 'godlygeek/tabular', { 'on': ['Tab', 'Tabularize'] }
-Plug 'gmarik/sudo-gui.vim', { 'on': ['SudoWrite', 'W'] }
 Plug 'milkypostman/vim-togglelist'
-Plug 'mutewinter/swap-parameters'
-Plug 'keepcase.vim'
+"Plug 'mutewinter/swap-parameters'
+Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
-Plug 'sjbach/lusty'
-Plug 'benmills/vimux'
-Plug 'rking/ag.vim'
 
-" JS
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+" Languages
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
-Plug 'itspriddle/vim-jquery', { 'for': 'javascript' }
-Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
-
-" Random languages
 Plug 'Raimondi/delimitMate'
-Plug 'Blackrush/vim-gocode', { 'for': 'go' }
-Plug 'ChrisYip/Better-CSS-Syntax-for-Vim', { 'for': 'css' }
+Plug 'ap/vim-css-color'
+Plug 'duganchen/vim-soy'
 Plug 'acustodioo/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
-Plug 'scrooloose/syntastic'
-Plug 'tfnico/vim-gradle'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'haml', 'xsl', 'xslt']}
-Plug 'ingydotnet/yaml-vim', { 'for': 'yaml' }
-Plug 'raichoo/haskell-vim'
+Plug 'neomake/neomake'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 
 call plug#end()
 
@@ -86,6 +78,8 @@ if has('gui_macvim')
 endif
 
 colorscheme solarized
+set bg=dark
+call togglebg#map("<F5>")
 
 set backup
 set backupdir=~/.vim/backup//
@@ -93,44 +87,33 @@ set directory=~/.vim/tmp//
 set undodir=~/.vim/tmp/undo//
 set noswapfile
 
-set ruler
 set nu
 set nowrap
-set laststatus=2
 set cmdheight=2
-set encoding=utf-8
 if exists("+colorcolumn")
   set colorcolumn=+1
 endif
 
 syntax on
-set autoread
-set wildmenu
 set hidden
-set history=768
 set cf
 set autowrite
 
 set tabstop=2
-set backspace=2
 set shiftwidth=2
 set cindent
-set autoindent
-set smarttab
 set expandtab
 
-nnoremap / /\v
-vnoremap / /\v
+set clipboard=unnamedplus
 set ignorecase
 set smartcase
-set incsearch
 set hlsearch
 set gdefault
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
 set sidescrolloff=2
 set numberwidth=4
-nnoremap <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -152,8 +135,15 @@ set list
 set listchars=""
 " a tab should display as "  ", trailing whitespace as "."
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
-highlight NonText ctermfg=DarkGrey
-highlight SpecialKey ctermbg=0 ctermfg=DarkRed
+
+" Auto-highlight trailing whitespace (unless currently editing the line).
+highlight ExtraWhitespace term=reverse cterm=reverse ctermfg=1 guifg=White guibg=Red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " Demo: tab & trailing spaces should be red	text    
 
 set noerrorbells
@@ -260,14 +250,25 @@ nmap <Leader>gd :Gdiff<CR>
 " Exit a diff by closing the diff window
 nmap <Leader>gx :wincmd h<CR>:q<CR>
 
-" ---------------
-" ctrlp.vim
-" ---------------
+" FZF Config -- make it act like CtrlP
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <silent> <c-p> :Files<cr>
+" <M-p> for open buffers
+nnoremap <silent> <M-p> :Buffers<cr>
+nmap <Leader>lj :Buffers<cr>
 
-" Ensure max height isn't too large.
-let g:ctrlp_max_height = 10
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_working_path_mode = 'ra'
+" <M-S-p> for MRU
+nnoremap <silent> <M-S-p> :History<cr>
+
+" Better command history
+command! CmdHist call fzf#vim#command_history()
+nnoremap q: :CmdHist<CR>
+" Better search history
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap q/ :QHist<CR>
 
 " ---------------
 " Strip Trailing White Space
@@ -289,9 +290,6 @@ endfunction
 command! StripTrailingWhiteSpace :call Preserve("%s/\\s\\+$//e")<CR>
 
 imap jj <Esc>
-imap uu _
-imap hh =>
-imap aa @
 
 map <S-Enter> O<ESC>
 map <Enter> o<ESC>
@@ -310,33 +308,18 @@ nmap <silent> <leader>x :bd<CR>
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
 
-nnoremap <leader>a :Ag
+nnoremap <leader>a :Ag 
 
 noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
 
-let g:airline_powerline_fonts = 1
-let g:tmuxline_preset = 'crosshair'
-let g:promptline_preset = {
-        \'a': [ promptline#slices#user() ],
-        \'b': [ promptline#slices#cwd() ],
-        \'c' : [ promptline#slices#vcs_branch() ],
-        \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#battery() ],
-        \'z' : [ promptline#slices#host() ]}
+let g:airline_powerline_fonts = 0
 
 " Scratch.vim
 let g:scratch_height = 20
 let g:scratch_top = 1
 
-" swap-parameters
-let g:SwapParametersMapForwards = '<leader>s'
-let g:SwapParametersMapBackwards = '<leader>S'
-
-" haskell
-let g:haskell_enable_quantification = 1
-let g:haskell_enable_recursivedo = 1
-let g:haskell_enable_arrowsyntax = 1
-let hs_highlight_delimiters = 1
+let delimitMate_expand_cr = 1
 
 " Post-config
 silent! source ~/.vimrc-post

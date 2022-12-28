@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# First find the X input ID corresponding to the
+# keyboard we're interested in.
+kbd_id() {
+  keyboard="$1"
+  xinput list |
+  sed -n "s/.*$keyboard.*id=\([0-9]*\).*keyboard.*/\1/p"
+}
+# In our case the USB:ID was shown in the `xinput list` output,
+# but this is unusual and you may have to match
+# on names or even correlate with /dev/input/by-id/*
+realforce_id=$(kbd_id 'Topre Corporation Realforce 87')
+[ "$realforce_id" ] && setxkbmap -device $realforce_id -option ctrl:nocaps,altwin:swap_lalt_lwin
+
+lenovo_id=$(kbd_id 'AT Translated Set 2 keyboard')
+[ "$lenovo_id" ] && setxkbmap -device $lenovo_id -option ctrl:nocaps,altwin:swap_lalt_lwin
+
+#xkbcomp -w0 -I$HOME/.xkb -R$HOME/.xkb keymap/mykbd $DISPLAY
+
+trackpoint="TPPS/2 IBM TrackPoint"
+touchpad="Synaptics TM3289-021"
+
+xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1 # correct scrolling direction
+xinput set-prop "$touchpad" "libinput Tapping Enabled" 1 # tap-to-click
+xinput set-prop "$touchpad" "libinput Click Method Enabled" 0, 1 # two-finger right click
+xinput set-prop "$touchpad" "libinput Accel Speed" 1.0 # fastest, doesn't feel as fast as I want it, figuring it out

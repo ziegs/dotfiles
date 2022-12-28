@@ -4,6 +4,16 @@ lock() {
   i3lock -c 000000 -p win -d
 }
 
+_suspend() {
+  dbus-send \
+    --system \
+    --dest=org.freedesktop.UPower \
+    --type=method_call \
+    --print-reply \
+    /org/freedesktop/UPower \
+    org.freedesktop.UPower.Suspend
+}
+
 case "$1" in
   lock)
     lock
@@ -12,7 +22,7 @@ case "$1" in
     i3-msg exit
     ;;
   suspend)
-    lock && systemctl suspend
+    lock && _suspend
     ;;
   hibernate)
     lock && systemctl hibernate
