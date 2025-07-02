@@ -1,0 +1,308 @@
+"
+" Vim Config
+"
+
+" Preconfig for Vundle
+set nocompatible               " be iMproved
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+
+"Navigation
+Plug '~/.fzf' | Plug 'junegunn/fzf.vim'
+Plug 'Lokaltog/vim-easymotion'
+
+" UI
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'farmergreg/vim-lastplace'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'tomtom/quickfixsigns_vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-sleuth'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'mhinz/vim-signify'
+Plug 'jceb/vim-orgmode'
+Plug 'justincampbell/vim-eighties'
+
+" Commands
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-fugitive'
+Plug 'milkypostman/vim-togglelist'
+"Plug 'mutewinter/swap-parameters'
+Plug 'vim-scripts/keepcase.vim'
+Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
+
+" Languages
+Plug 'leshill/vim-json'
+Plug 'Raimondi/delimitMate'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'hallison/vim-markdown', { 'for': 'markdown' }
+
+call plug#end()
+
+syntax on
+silent! source ~/.vimrc-pre
+
+set termguicolors
+set bg=dark
+colorscheme solarized8_flat
+
+set backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/tmp//
+set undodir=~/.vim/tmp/undo//
+set noswapfile
+
+set nu
+set nowrap
+set cmdheight=2
+if exists("+colorcolumn")
+  set colorcolumn=+1
+endif
+
+syntax on
+set hidden
+set cf
+set autowrite
+
+set tabstop=2
+set shiftwidth=2
+set cindent
+set expandtab
+
+set clipboard=unnamedplus
+set ignorecase
+set smartcase
+set hlsearch
+set gdefault
+set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
+  \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
+set sidescrolloff=2
+set numberwidth=4
+nnoremap <silent> <leader><space> :nohlsearch<CR>
+nnoremap <tab> %
+vnoremap <tab> %
+
+set showmatch
+set matchtime=2
+
+set equalalways
+set splitbelow splitright
+:noremap ,v <C-w>v<C-w>l
+:noremap ,h <C-w>s<C-w>j
+
+set cursorline
+set relativenumber
+set undofile
+
+set list
+
+" Reset the listchars
+set listchars=""
+" a tab should display as "  ", trailing whitespace as "."
+set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
+
+" Auto-highlight trailing whitespace (unless currently editing the line).
+highlight ExtraWhitespace term=reverse cterm=reverse ctermfg=1 guifg=White guibg=Red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Demo: tab & trailing spaces should be red	text    
+
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" set mousehide
+set mouse=a
+
+set complete=.,w,b,u,U
+
+command! W w
+command! Q q
+
+" ---------------
+" Window movement
+" ---------------
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" ---------------
+" Turn off the arrows
+" ---------------
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" Move by visual line, not file line
+nnoremap j gj
+nnoremap k gk
+
+
+
+nmap <C-d> <C-b>
+if has("gui_macvim")
+  nmap <D-f> <C-f>
+  nmap <D-d> <C-b>
+else
+  nmap <M-f> <C-f>
+  nmap <M-d> <C-b>
+endif
+
+nmap gy :%y+<cr> " Yank entire buffer
+
+
+" ---------------
+" NERDTree
+" ---------------
+nnoremap <leader>nn :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+  \&& b:NERDTreeType == "primary") | q | endif
+
+
+" ---------------
+" Session
+" ---------------
+let g:session_autosave=0
+let g:session_autoload=0
+nnoremap <leader>os :OpenSession<CR>
+
+" ---------------
+" SpeedDating
+" ---------------
+let g:speeddating_no_mappings=1 " Remove default mappings (C-a etc.)
+nmap <silent><leader>dm <Plug>SpeedDatingDown
+nmap <silent><leader>dp <Plug>SpeedDatingUp
+nmap <silent><leader>dn <Plug>SpeedDatingNowUTC
+
+" ---------------
+" Tabular
+" ---------------
+nmap <Leader>t= :Tabularize /=<CR>
+vmap <Leader>t= :Tabularize /=<CR>
+nmap <Leader>t: :Tabularize /:\zs<CR>
+vmap <Leader>t: :Tabularize /:\zs<CR>
+nmap <Leader>t, :Tabularize /,\zs<CR>
+vmap <Leader>t, :Tabularize /,\zs<CR>
+nmap <Leader>t> :Tabularize /=>\zs<CR>
+vmap <Leader>t> :Tabularize /=>\zs<CR>
+nmap <Leader>t- :Tabularize /-<CR>
+vmap <Leader>t- :Tabularize /-<CR>
+nmap <Leader>t" :Tabularize /"<CR>
+vmap <Leader>t" :Tabularize /"<CR>
+
+" ---------------
+" Fugitive
+" ---------------
+nmap <Leader>gc :Gcommit -v<CR>
+nmap <Leader>gw :Gwrite<CR>
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gp :Git push<CR>
+ " Mnemonic, gu = Git Update
+nmap <Leader>gu :Git pull<CR>
+nmap <Leader>gd :Gdiff<CR>
+" Exit a diff by closing the diff window
+nmap <Leader>gx :wincmd h<CR>:q<CR>
+
+" FZF Config -- make it act like CtrlP
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <silent> <c-p> :Files<cr>
+" <M-p> for open buffers
+nnoremap <silent> <M-p> :Buffers<cr>
+nmap <Leader>lj :Buffers<cr>
+
+" <M-S-p> for MRU
+nnoremap <silent> <M-S-p> :History<cr>
+
+" Better command history
+command! CmdHist call fzf#vim#command_history()
+nnoremap q: :CmdHist<CR>
+" Better search history
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap q/ :QHist<CR>
+
+" ---------------
+" Strip Trailing White Space
+" ---------------
+" From http://vimbits.com/bits/377
+" Preserves/Saves the state, executes a command, and returns to the saved state
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+"strip all trailing white space
+command! StripTrailingWhiteSpace :call Preserve("%s/\\s\\+$//e")<CR>
+
+imap jj <Esc>
+
+map <S-Enter> O<ESC>
+map <Enter> o<ESC>
+imap <C-c> <CR><Esc>O
+
+" Key mappings " {{{
+nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
+nnoremap <silent> <LocalLeader>rt :tabnew ~/.vim/vimrc<CR>
+nnoremap <silent> <LocalLeader>re :e ~/.vim/vimrc<CR>
+nnoremap <silent> <LocalLeader>rd :e ~/.vim/ <CR>
+
+vmap so !sort<CR>
+nmap <silent> <leader>w :w<CR>
+nmap <silent> <leader>x :bd<CR>
+
+nmap <silent> <Space> <PageDown>
+nmap <silent> <M-Space> <PageUp>
+
+nnoremap <leader>a :Ag 
+
+noremap  <F2> :NERDTreeToggle<cr>
+inoremap <F2> <esc>:NERDTreeToggle<cr>
+
+let g:airline_powerline_fonts = 0
+
+" Scratch.vim
+let g:scratch_height = 20
+let g:scratch_top = 1
+
+let delimitMate_expand_cr = 1
+
+" Post-config
+silent! source ~/.vimrc-post
+
