@@ -6,7 +6,19 @@
   args = ["--recurse-submodules"]
   [".zprezto".pull]
   args = ["--recurse-submodules", "--ff-only"]
+
 [".config/tmux/plugins/tpm"]
   type = "git-repo"
   url = "https://github.com/tmux-plugins/tpm"
   refresh = true
+
+[".fzf"]
+  type = "git-repo"
+  url = "https://github.com/junegunn/fzf"
+  [".fzf".clone]
+  args = ["--depth", "1"]
+  branch = "master"
+  refreshPeriod = "24h"
+  [".fzf".pull]
+  args = ["--ff-only", "--depth", "1"]
+

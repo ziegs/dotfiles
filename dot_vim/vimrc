@@ -32,6 +32,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 Plug 'benmills/vimux'
 Plug 'mhinz/vim-signify'
 Plug 'jceb/vim-orgmode'
@@ -53,11 +54,13 @@ Plug 'leshill/vim-json'
 Plug 'Raimondi/delimitMate'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
+Plug 'alker0/chezmoi.vim'
 
 call plug#end()
 
-syntax on
 silent! source ~/.vimrc-pre
+
+syntax on
 
 set termguicolors
 set bg=dark
@@ -76,7 +79,6 @@ if exists("+colorcolumn")
   set colorcolumn=+1
 endif
 
-syntax on
 set hidden
 set cf
 set autowrite
@@ -278,7 +280,7 @@ map <Enter> o<ESC>
 imap <C-c> <CR><Esc>O
 
 " Key mappings " {{{
-nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
+nnoremap <silent> <LocalLeader>rs :source ~/.vim/vimrc<CR>
 nnoremap <silent> <LocalLeader>rt :tabnew ~/.vim/vimrc<CR>
 nnoremap <silent> <LocalLeader>re :e ~/.vim/vimrc<CR>
 nnoremap <silent> <LocalLeader>rd :e ~/.vim/ <CR>
@@ -295,7 +297,10 @@ nnoremap <leader>a :Ag
 noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
 
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_preset = 'nightly_fox'
+
 
 " Scratch.vim
 let g:scratch_height = 20
