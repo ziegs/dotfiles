@@ -64,7 +64,7 @@ syntax on
 
 set termguicolors
 set bg=dark
-colorscheme solarized8_flat
+colorscheme solarized8
 
 set backup
 set backupdir=~/.vim/backup//
