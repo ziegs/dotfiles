@@ -27,7 +27,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'farmergreg/vim-lastplace'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'tomtom/quickfixsigns_vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
@@ -45,7 +44,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
 Plug 'milkypostman/vim-togglelist'
-"Plug 'mutewinter/swap-parameters'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 
