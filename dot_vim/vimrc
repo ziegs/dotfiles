@@ -29,7 +29,6 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'lifepillar/vim-solarized8'
 Plug 'ervandew/supertab'
-Plug 'tpope/vim-sleuth'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'benmills/vimux'
@@ -38,11 +37,12 @@ Plug 'jceb/vim-orgmode'
 Plug 'justincampbell/vim-eighties'
 
 " Commands
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'milkypostman/vim-togglelist'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
@@ -53,6 +53,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'hallison/vim-markdown', { 'for': 'markdown' }
 Plug 'alker0/chezmoi.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
