@@ -1,0 +1,5 @@
+# Source all the configs!
+
+include @sysconfdir@/sway/config.d/*
+include ~/.config/sway/config.d/*
+

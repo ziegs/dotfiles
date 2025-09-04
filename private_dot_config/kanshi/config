@@ -1,0 +1,8 @@
+profile {
+  output eDP-1 disable
+  output 'Dell Inc. DELL P3223QE C5LTWN3' mode 3840x2160 position 0,0 scale 1.25
+}
+
+profile {
+  output eDP-1 enable
+}

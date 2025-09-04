@@ -1,0 +1,27 @@
+### Include the vars file
+include ~/.config/sway/config.d/vars
+
+# Start ssh-agent
+exec "ssh-agent -a $SSH_AUTH_SOCK"
+
+# Start goobuntu indicator
+exec /usr/share/goobuntu-indicator/goobuntu_indicator.py
+
+# Start bluetooth and network manager applets
+exec_always blueman-applet
+exec_always nm-applet --indicator
+
+# Display output management; `pkill -HUP kanshi` reloads Kanshi config
+exec_always pkill kanshi; exec kanshi
+
+# Daemon for playerctl consistent ordering
+exec playerctld daemon
+
+# Clipman
+exec wl-paste -t text --watch clipman store -P --histpath="/tmp/clipman.json"
+
+# Idle configuration
+exec swayidle -w \
+        timeout 300 '$lock' \
+        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        before-sleep '$lock'

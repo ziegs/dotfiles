@@ -1,0 +1,3 @@
+### Window rules
+
+for_window [title="^Picture in picture$"] floating enable, sticky enable

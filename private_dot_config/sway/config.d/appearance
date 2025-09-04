@@ -1,0 +1,44 @@
+### Appearance
+
+# Border settings
+
+smart_borders on
+default_border pixel 2
+
+font PragmataPro Mono Liga 12
+
+titlebar_border_thickness 0
+titlebar_padding 10 1
+
+# Color definitions for Sway config.
+set {
+    $coloract   "#b58900"
+    $colorin    "#268bd2"
+    $split      "#d69f00"
+    $coloru     "#dc322f"
+    $color0     "#002b36"
+    $color1     "#dc322f"
+    $color2     "#859900"
+    $color3     "#b58900"
+    $color4     "#268bd2"
+    $color5     "#6c71c4"
+    $color6     "#2aa198"
+    $color7     "#eee8d5"
+    $color8     "#065069"
+    $color9     "#ff3a36"
+    $color10    "#a0c100"
+    $color11    "#d69f00"
+    $color12    "#269beb"
+    $color13    "#777cd8"
+    $color14    "#2bbfb4"
+    $color15    "#fdf6e3"
+}
+
+# class                 border    backgr    text    indicator child_border
+client.focused          $coloract $coloract $color15 $split  $coloract
+client.focused_inactive $color6   $coloract $color15 $split  $color5
+client.unfocused        $color8   $colorin  $color15 $split  $color8
+client.urgent           $color1   $color0   $color15 $color1 $color1
+client.placeholder      $color8   $color0   $color15 $color0 $color8
+client.background       $color0
+

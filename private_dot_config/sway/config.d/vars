@@ -1,0 +1,25 @@
+### Variables
+#
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Terminal emulator
+set $term alacritty
+
+# Application launcher
+set $menu wofi -G --show drun -I --width 700 --lines 11 -M fuzzy -i
+
+# Clipboard manager
+set $clipmanager clipman pick --tool wofi -T'-i --width 700 --lines 10' --histpath="/tmp/clipman.json"
+
+# Locker script
+set $lock ~/.config/sway/lock.sh
+
+set $primary_display exec "swaymsg -pt get_outputs | grep focused | awk '{print $2}'"
+
