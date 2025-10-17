@@ -27,3 +27,8 @@
   url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   refreshPeriod = "168h"
 
+[".local/share/alacritty-theme"]
+  type = "git-repo"
+  url = "https://github.com/alacritty/alacritty-theme"
+  refresh = true
+

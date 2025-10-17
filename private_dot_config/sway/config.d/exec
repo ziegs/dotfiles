@@ -2,17 +2,21 @@
 include ~/.config/sway/config.d/vars
 
 # Start ssh-agent
-exec "ssh-agent -a $SSH_AUTH_SOCK"
+#exec "ssh-agent -a $SSH_AUTH_SOCK"
+
+#exec mako
+exec swaync
+exec sworkstyle
 
 # Start goobuntu indicator
-exec /usr/share/goobuntu-indicator/goobuntu_indicator.py
+exec_always /usr/share/goobuntu-indicator/goobuntu_indicator.py
 
 # Start bluetooth and network manager applets
 exec_always blueman-applet
 exec_always nm-applet --indicator
 
 # Display output management; `pkill -HUP kanshi` reloads Kanshi config
-exec_always pkill kanshi; exec kanshi
+exec_always kanshi
 
 # Daemon for playerctl consistent ordering
 exec playerctld daemon

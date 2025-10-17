@@ -1,3 +1,18 @@
-### Window rules
+### Window rules and associated stuff
+
+workspace_auto_back_and_forth yes
 
 for_window [title="^Picture in picture$"] floating enable, sticky enable
+
+set $gmail_appid "chrome-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default"
+set $calendar_appid "chrome-kjbdgfilnfhdoflbpgamdcdgpehopbep-Default"
+set $chat_appid "chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-Default"
+set $whatsapp_appid "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
+# Gmail
+assign [app_id=$gmail_appid] 1
+# Google Calendar
+assign [app_id=$calendar_appid] 2
+# Google Chat
+assign [app_id=$chat_appid] 3
+# WhatsApp Web
+assign [app_id=$whatsapp_appid] 10

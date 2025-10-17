@@ -1,0 +1,171 @@
+[{
+  "modules-left": [
+    "clock"
+  ],
+  "modules-center": [
+    "sway/workspaces",
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    //"custom/swaync",
+    //"custom/megasync",
+    //"custom/network",
+    "battery"
+  ],
+
+  "custom/eye": {
+    "format": ""
+  },
+/*  "custom/swaync": {
+    "exec": "$HOME/.config/waybar/custom_modules/custom_notifications.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "swaync-client -d"
+  },
+  "custom/megasync": {
+    "exec": "$HOME/.config/waybar/custom_modules/custom_megasync.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 3
+  },*/
+  "custom/time": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 1
+  },
+/*  "custom/network": {
+    "exec": "$HOME/.config/waybar/custom_modules/custom_network.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 3
+  },*/
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%A %H:%M:%S %e %b %Y}",
+    "interval": 1
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "light -A 1",
+    "on-scroll-down": "light -U 1"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "蓼",
+      "headset": "蓼",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""] // 醙
+    },
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "",
+    //"format-ethernet": "{ipaddr}/{cidr} 嬨",
+    "format-ethernet": "{ifname}/{cidr} 嬨",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 嬨",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+    },
+    "format": "{icon}",
+    "format-icons": {
+        "urgent": "",
+        //# "focused": "",
+        "focused": "",
+        "default": "",
+        "persistent": ""
+    }
+  }
+},
+
+{
+  "position": "bottom",
+  "modules-left": [
+    "media",
+  ],
+  "modules-center": [
+  ],
+  "modules-right": [
+    "memory",
+    "cpu",
+    "temperature"
+  ],
+  "memory": {
+      "format": "  {percentage}%"
+  },
+  "cpu": {
+      "format": " {usage}%"
+  },
+  "temperature": {
+      "format": "{temperatureC}°C"
+  },
+  /*"custom/cpu": {
+    "exec": "$HOME/.config/waybar/custom_modules/custom_cpu.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 3
+  },
+  "custom/memory": {
+    "exec": "$HOME/.config/waybar/custom_modules/custom_memory.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 5
+  },
+  "custom/michurin": {
+    "exec": "poetry run python $HOME/.config/waybar/custom_modules/michurin.py",
+    "format": "{}",
+    "return-type": "json",
+    "interval": 60
+  },
+  "custom/media": {
+      "format": "{icon} {}",
+      "return-type": "json",
+      "max-length": 100,
+      "format-icons": {
+          "spotify": "",
+          "default": "🎜"
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py --player spotify 2> /dev/null"
+  },*/
+}]

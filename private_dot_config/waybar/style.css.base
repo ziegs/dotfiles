@@ -1,0 +1,152 @@
+* {{
+  border: none;
+  border-radius: 0;
+  font-family: mononoki Nerd Font, Cascadia Code, RobotoMono Nerd Font;
+  font-size: 16px;
+  font-weight: 400;
+}}
+
+window#waybar {{
+  background-color: {color0};
+  color: {color7};
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  opacity: 0.9;
+}}
+
+window#waybar.hidden {{
+  opacity: 0.2;
+}}
+
+#workspaces button {{
+  padding: 0 0px;
+  color: {color7};
+  border-radius: 5px;
+  font-size: 20px;
+}}
+
+#workspaces button.persistent {{
+  color: {color8};
+  border-bottom: none;
+  font-size: 20px;
+}}
+
+#workspaces button.visible {{
+  color: {color4};
+  border-bottom: none;
+  font-size: 20px;
+}}
+
+#workspaces button.focused {{
+  color: {color11};
+  border-bottom: none;
+  font-size: 20px;
+}}
+
+#workspaces button.urgent {{
+  color: {color1};
+}}
+
+widget > * {{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}}
+
+.modules-left > widget > * {{
+  margin-left: 12px;
+  margin-right: 12px;
+}}
+
+.modules-left > widget:first-child > * {{
+  margin-left: 20px;
+}}
+
+.modules-left > widget:last-child > * {{
+  margin-right: 12px;
+}}
+
+.modules-center > widget > * {{
+  margin-left: 12px;
+  margin-right: 12px;
+}}
+
+.modules-right > widget > * {{
+  padding: 0 12px;
+  margin-left: 0;
+  margin-right: 0;
+  /*color: {color0};*/
+  /*background-color: {color7};*/
+}}
+
+.modules-right > widget:first-child > * {{
+  border-radius: 5px 0 0 5px;
+}}
+
+.modules-right > widget:last-child > * {{
+  border-radius: 0 5px 5px 0;
+  margin-right: 20px;
+}}
+
+#mode {{
+  background: transparent;
+  color: {color1};
+}}
+
+@keyframes blink {{
+  to {{
+    color: {color15};
+  }}
+}}
+
+#battery.critical:not(.charging) {{
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}}
+
+label:focus {{
+  background-color: {color0};
+}}
+
+tooltip {{
+  border-radius: 5px;
+  background: {color7};
+}}
+
+tooltip label {{
+  color: {color0};
+}}
+
+#custom-eye {{
+  font-size: 15px;
+  font-family: 'RobotoMono Nerd Font';
+  color: {color5};
+  text-shadow: 1px 1px 2px black;
+}}
+
+#custom-time {{
+  font-family: 'Cascadia Code';
+  font-size: 15px;
+}}
+
+#custom-michurin {{
+  font-size: 16px;
+}}
+
+#custom-network,
+#custom-megasync {{
+  font-size: 18px;
+}}
+
+#custom-memory,
+#custom-cpu {{
+  font-size: 16px;
+}}
+
+#battery, #backlight, #pulseaudio,
+#custom-media,
+#memory, #cpu, #temperature {{
+  color: {color6};
+}}
